@@ -28,7 +28,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 <div markdown="span" class="alert alert-primary">
 
-:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/se-edu/addressbook-level3/tree/master/docs/diagrams/) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
+:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/AY2122S1-CS2103T-W17-4/tp/tree/master/docs/diagrams) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
 </div>
 
 ### 2.1 Architecture
@@ -41,18 +41,18 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** has two classes called [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
+**`Main`** has two classes called [`Main`](https://github.com/AY2122S1-CS2103T-W17-4/tp/blob/master/src/main/java/seedu/unify/Main.java) and [`MainApp`](https://github.com/AY2122S1-CS2103T-W17-4/tp/blob/master/src/main/java/seedu/unify/MainApp.java). It is responsible for,
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
 
-[**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
+[**`Commons`**](https://github.com/AY2122S1-CS2103T-W17-4/tp/tree/master/src/main/java/seedu/unify/commons) represents a collection of classes used by multiple other components.
 
 The rest of the App consists of four components.
 
-* [**`UI`**](#ui-component): The UI of the App.
-* [**`Logic`**](#logic-component): The command executor.
-* [**`Model`**](#model-component): Holds the data of the App in memory.
-* [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
+* [**`UI`**](https://github.com/AY2122S1-CS2103T-W17-4/tp/tree/master/src/main/java/seedu/unify/ui): The UI of the App.
+* [**`Logic`**](https://github.com/AY2122S1-CS2103T-W17-4/tp/tree/master/src/main/java/seedu/unify/logic): The command executor.
+* [**`Model`**](https://github.com/AY2122S1-CS2103T-W17-4/tp/tree/master/src/main/java/seedu/unify/model): Holds the data of the App in memory.
+* [**`Storage`**](https://github.com/AY2122S1-CS2103T-W17-4/tp/tree/master/src/main/java/seedu/unify/storage): Reads data from, and writes data to, the hard disk.
 
 
 **How the architecture components interact with each other**
@@ -80,7 +80,7 @@ The **API** of this component is specified in [`Ui.java`](https://github.com/AY2
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `TaskListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2122S1-CS2103T-W17-4/tp/blob/master/src/main/java/seedu/unify/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2122S1-CS2103T-W17-4/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
@@ -396,7 +396,7 @@ The following demonstrates a usage scenario where the user wants to delete the f
 3. It then calls the `parse` method in `SortCommandParser` to parse the string `”x/time o/asc”`.
 4. A `SortCommand` object will be initialized, taking in the sort type and sort order in the function, in this case the type being time and order being asc (ascending order).
 5. The method call then returns to `LogicManager`, which calls the `execute` method of `SortCommand`.
-6. By using a functional interface called ‘BiFunction’, the `SotCommand` sorts the task list by calling a method ‘sortTasks’ under ‘Model’.
+6. By using a functional interface called `BiFunction`, the `SortCommand` sorts the task list by calling a method `sortTasks` under `Model`.
 7. A `CommandResult` object is created with the appropriate messages and returned to `LogicManager`.
 
 The sequence diagram below illustrates the interaction between Logic and Model components when the user executes `sort x/time o/asc` command as in Step 3.
@@ -527,8 +527,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | user                                       | edit tasks                     | more easily change specifics of a task without deleting and re-adding  |
 | `* *`    | user                                       | show tasks                     | show the tasks that I have for the week                                |
 | `* *`    | user                                       | tag tasks                      | add a category for the task                                            |
-| `* *`    | user with many tasks in the address book   | search for tasks               | locate a task easily                                                   |
-| `* *`    | user with many tasks in the address book   | sort tasks                     | organise my tasks in a better way                                      |
+| `* *`    | user with many tasks in the task list   | search for tasks               | locate a task easily                                                   |
+| `* *`    | user with many tasks in the task list   | sort tasks                     | organise my tasks in a better way                                      |
 | `*`      | unmotivated student                        | track my weekly progress       | get a sense of achievement on completion of tasks                      |
 
 
@@ -699,6 +699,29 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. Uni-Fy shows an error message.
 
   Use case resumes at step 2.
+
+**Use case: UC09 - Sort a task**
+
+**MSS**
+
+1.  User requests for all their tasks to be sorted by time in ascending order.
+2.  Uni-Fy sorts user's list of tasks by time in ascending order.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The user requests for tasks to be sorted by priority in descending order.
+    
+    * 1a1. Uni-Fy sorts user's list of tasks by priority in descending order.
+    
+  Use case ends.
+
+* 1b. The given sort_type is invalid.
+
+    * 1b1. Uni-Fy shows an error message.
+
+  Use case ends.
     
 
 ## Appendix D: Non-Functional Requirements

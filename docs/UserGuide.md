@@ -61,7 +61,7 @@ This table below illustrates what each formatting means.
 
 | Formatting    | What                            | Meaning   | Example                     |
 | ----------    |-------------------------------------|-----------|--------------------------|
-| `mark-up`      | Words in light-blue highlight, also known as a mark-up| A command that can be typed into Uni-Fy|`help`|
+| `mark-up`      | Words in light-gray highlight, also known as a mark-up| A command that can be typed into Uni-Fy|`help`|
 | <code><i>italic</i></code> | Words in <i>italic</i> | A parameter to be supplied by the user |<code><i>n/task_name</i></code>|
 | `(brackets)` | Words in round brackets| Optional parameter |<code><i>(d/date)</i></code> or <br> <code><i>(task_id)</i></code> |
 | <code>multiple...</code> | Words with `…` after them| Parameters that can be used multiple times including 0 times|`tg/tag...`|
@@ -133,6 +133,8 @@ This section highlights all the commands that Uni-Fy supports. These include det
    * Items with <code>t/</code> before them represent the time of the task
    * Items with <code>p/</code> before them represent the priority level of the task
      * The priority level can be `LOW`, `MEDIUM` or `HIGH` (**Note**: needs to be uppercase)
+   * Items with <code>x/</code> before them represent the way to sort the tasks
+   * Items with <code>o/</code> before them represent the order to sort the tasks
    * Date is represented in YYYY-MM-DD format, and year should be 2021
    * Time is represented in HH:MM format
    * Tag must be alphanumeric and contain at most 15 characters
@@ -379,7 +381,7 @@ Sorts the tasks in the task list of Uni-Fy.
 <div markdown="block" class="alert alert-primary">
 
 **:clipboard: Format:**<br>
-- `sort x/(time or priority) o/(asc or desc)`
+- `sort x/(sort_by) o/(sort_order)`
 </div>
 
 
@@ -496,12 +498,13 @@ When you run the clear command, all the tasks in the task list of Uni-Fy get del
 
 ### 4.12 Retrieving past commands
 
-Shows the previous commands run on **Uni-Fy**. The user can either type the command or use the up arrow key to go through all the pass commands.
+Shows the previous commands run on **Uni-Fy**. The user can either type the command or use arrow keys to go through all the past commands.
 
 <div markdown="block" class="alert alert-primary">
 
 **:clipboard: Format:**<br>
-- `/prev` or &#8593;
+- `/prev` or &#8593; for previous command
+- `/next` or &#x2193; for next command
 
 </div>
 
@@ -515,10 +518,14 @@ Your history is erased when you close and reopen the app. Do not close the app i
 
 Shows a message explaining how to access the help page.
 
+<div markdown="block" class="alert alert-primary">
+
+**:clipboard: Format:**<br>
+
+- <code>help</code>
+</div>
+
 ![help message](images/helpMessage.png)
-
-Format: `help`
-
 
 ### 4.14 Saving the data
 
@@ -582,5 +589,5 @@ Action | Format, Examples
 **Sort** | <code>sort <i>x/sort_by o/sort_order</i></code> <br>e.g `sort x/time o/asc` <br>e.g `sort x/priority o/desc`
 **Delete** | <code>delete <i>task_id (task_id)</i></code> <br> e.g. <code>delete 1 3 4 </code>
 **Clear** | <code>clear</code> <br>
-**Command History** | <code>/prev</code> or <code>&#8593;</code><br>
+**Command History** | <code>/prev</code> or <code>&#8593;</code><br> <code>/next</code> or <code>&#x2193;</code><br>
 **Help** | `help`
